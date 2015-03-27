@@ -1,3 +1,3 @@
-# Selphie Printer
+# Selfie Printer
 
 Amazing app coming soon.
