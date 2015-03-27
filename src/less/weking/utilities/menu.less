@@ -1,0 +1,66 @@
+// Menu generator
+//
+// Mixin return rules for coloring menus
+//
+// Arguments:
+//   @bg - name of background color swatch (type: string)
+//   @color - menu text color (type: color)
+//   @indicator - indicator color of active tab (type: color)
+//   @bg-level - level of background color swatch (type: number)
+//
+
+.menu-gen(@bg, @color, @indicator: @color, @bg-level: 500) {
+
+  // Make color swatch variables names
+  @topNavBg: %(~"%s%s", ~'@{bg}', @bg-level);
+  @topNavColor: @color;
+
+  @dropDownBg: ~'white';
+  @dropDownBgHover: %(~"%s%s", ~'@{bg}', 50);
+  @dropDownColor: @grey900;
+
+  background: @@topNavBg;
+
+  .menu_brand {
+    color: @topNavColor !important;
+  }
+
+  .menu_ul {
+    .menu_a {
+      color: fade(@topNavColor, 60%);
+    }
+
+    // Active state & Brand link
+    .menu_li:hover,
+    .menu_active {
+      > .menu_a{
+        color: @topNavColor;
+      }
+    }
+
+    @media (min-width: @screen-md) {
+      &-dropdown {
+        background: @@dropDownBg;
+
+        .menu_a {
+          color: fade(@dropDownColor, 60%);
+        }
+
+        .menu_li:hover,
+        .menu_active {
+          > .menu_a {
+            background: @@dropDownBgHover;
+            color: @dropDownColor;
+          }
+        }
+      }
+
+      .menu_li:hover,
+      .menu_active {
+        > .menu_a {
+          border-color: @indicator;
+        }
+      }
+    }
+  }
+}

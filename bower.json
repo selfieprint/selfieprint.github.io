@@ -1,0 +1,19 @@
+{
+  "name": "selfieprint.github.io",
+  "version": "0.0.1",
+  "authors": [
+    "Constantine Karnaukhov <genteelknight@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "selfieprint.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

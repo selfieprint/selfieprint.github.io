@@ -1,0 +1,94 @@
+// Block:           Groups
+// Description:     Grouping elements
+//
+// Component:       'group'
+//
+// Element:         'group_addon'
+//
+// Modifiers:       'group-hr'
+//                  'group_addon-xs'
+//                  'group_addon-sm'
+//                  'group_addon-lg'
+//                  'group_addon-xl'
+//
+// Markup:
+// <div class="group group-hr">
+//   <button class="btn">Button 1</button>
+//   <span class="group_addon">Addon 1</span>
+//   <input class="form_control" type="text" placeholder="Input">
+//   <button class="btn">Button 2</button>
+//   <button class="btn">Button 3</button>
+// </div>
+//
+// ========================================================================
+
+.group {
+  &:extend(.clearfix all);
+
+  * {
+    margin: 0;
+    font-size: 14px;
+    font-family: @font-family;
+    float: none;
+    display: block;
+    width: 100%;
+  }
+
+  // Addon element
+  &_addon {
+    height: @font-line-height*1.5;
+    line-height: @font-line-height*1.5;
+    padding-left: @grid-baseline*2;
+    padding-right: @grid-baseline*2;
+    background: transparent;
+    border: 2px solid transparent;
+    color: @text-color;
+    text-align: center;
+
+    // SIZES
+
+    // Extra Small
+    &[class*=xs] {
+      font-size: 10px;
+      height: @font-line-height;
+      line-height: @font-line-height;
+      margin: @font-line-height/2 0;
+    }
+
+    // Small
+    &[class*=sm] {
+      font-size: 12px;
+      height: @font-line-height*1.25;
+      line-height: @font-line-height*1.25;
+      margin: @font-line-height*0.75/2 0;
+    }
+
+    // Large
+    &[class*=lg] {
+      font-size: 18px;
+      height: @font-line-height*2;
+      line-height: @font-line-height*2;
+      margin: @font-line-height/2 0;
+    }
+
+    // Extra Large
+    &[class*=xl] {
+      font-size: 24px;
+      height: @font-line-height*2.5;
+      line-height: @font-line-height*2.5;
+      margin: @font-line-height/4 0;
+    }
+  }
+
+  @media (min-width: @screen-sm) {
+
+    // Horizontal grouping
+    &[class*=hr] {
+      * {
+        float: left;
+        display: inline-block;
+        width: auto;
+      }
+    }
+  }
+}

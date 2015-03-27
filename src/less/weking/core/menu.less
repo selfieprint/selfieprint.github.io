@@ -1,0 +1,323 @@
+// Component:       Menu
+// Description:     Define styles for navigation menu
+//
+// Blocks:          'menu'
+//
+// Elements:        'menu_ul'
+//                  'menu_ul-dropdown'
+//                  'menu_li'
+//                  'menu_a'
+//                  'menu_active'
+//                  'menu_brand'
+//                  'menu_parent'
+//                  'menu_burger'
+//                  'menu_trigger'
+//
+// Modifiers:       'menu-vert'
+//                  'menu-droptop'
+//                  'menu-dropleft'
+//                  'menu-primary'
+//                  'menu-secondary'
+//                  'menu-black'
+//                  'menu-flat'
+//                  'menu-fixedTop'
+//                  'menu-fixedBottom'
+//
+// Markup:
+//
+// <!-- MENU -->
+// <nav class="menu menu-fixedTop-primary">
+//   <div class="menu_header">
+//     <a href="#" class="menu_a menu_brand">Brand</a>
+//     <label class="btn menu_burger" for="menu_trigger">Show menu</label>
+//   </div>
+//
+//   <input type="checkbox" id="menu_trigger" class="menu_trigger">
+//
+//   <ul class="menu_ul">
+//     <li class="menu_active"><a class="menu_a" href="#">Home</a></li>
+//     <li class="menu_parent">
+//       <a class="menu_a" href="#">Services</a>
+//       <ul class="menu_ul--dropdown">
+//         <li><a class="menu_a" href="#">Service 1</a></li>
+//         <li class="menu_parent">
+//           <a class="menu_a" href="#">Service 2</a>
+//           <ul>
+//             <li><a class="menu_a" href="#">Service 2.1</a></li>
+//             <li><a class="menu_a" href="#">Service 2.2</a></li>
+//             <li><a class="menu_a" href="#">Service 2.3</a></li>
+//           </ul>
+//         </li>
+//         <li><a class="menu_a" href="#">Service 3</a></li>
+//       </ul>
+//     </li>
+//     <li><a class="menu_a" href="#">Blog</a></li>
+//     <li><a class="menu_a" href="#">About Us</a></li>
+//     <li><a class="menu_a" href="#">Contact Us</a></li>
+//   </ul>
+// </nav>
+//
+// ========================================================================
+
+.menu {
+  .z-depth-1;
+  .menu-gen(@menu-bg, @menu-color, @grey700, 100);
+  &:extend(.clearfix all);
+
+  // Menu header
+  &_header {
+    &:extend(.clearfix all);
+  }
+
+  // Brand - Menu Heading
+  &_brand {
+    text-transform: uppercase;
+    font-weight: 900;
+    float: left;
+  }
+
+  // Burger icon
+  &_burger {
+    float: right;
+    margin-right: @grid-baseline*2;
+  }
+
+  // Trigger
+  &_trigger {
+    display: none;
+
+    // Show Menu list when trigger checked
+    &:checked + .menu_ul {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+    }
+  }
+
+  // Menu lists. Hidden by default
+  &_ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    .animate(~"opacity, visibility, height");
+
+    // Dropdowns
+    &-dropdown {
+      padding-left: 16px;
+      .animate(~"opacity, visibility, height");
+    }
+  }
+
+  // Menu item
+  &_li {
+    position: relative;
+    display: block;
+    vertical-align: middle;
+
+    // Hide dropdown
+    .menu_ul-dropdown {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+    }
+
+    // Show dropdown
+    &:hover > .menu_ul-dropdown {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+    }
+  }
+
+  // Menu link
+  &_a {
+    padding: 0 16px;
+    text-decoration: none;
+    line-height: @font-line-height*2;
+    display: block;
+    white-space: nowrap;
+    font-weight: 700;
+
+    // Add arrow to elements with dropdowns
+    .menu_li[class*=parent] > &:after {
+      content: " \25BE";
+      font-size: @font-size;
+      line-height: @font-line-height;
+      vertical-align: middle;
+    }
+  }
+
+  // Fixed menus
+  &[class*=fixedTop] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    .lh-border-radius(0);
+  }
+
+  &[class*=fixedBottom] {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    .lh-border-radius(0);
+    .z-depth-1('top');
+  }
+
+  // Colors
+  &[class*=primary] {
+    .menu-gen('primary', @white);
+  }
+
+  &[class*=secondary] {
+    .menu-gen('secondary', @white);
+  }
+
+  &[class*=black] {
+    .menu-gen('grey', @white, @white, 900);
+  }
+
+  // Flat menu (without shadow)
+  &[class*=flat] {
+    .z-depth-0;
+
+    .menu_ul-dropdown {
+      .z-depth-0;
+    }
+  }
+
+  // Responsive
+  @media (min-width: @screen-md) {
+    // Header
+    &_header {
+      float: left;
+    }
+
+    // Burger
+    &_burger {
+      display: none;
+    }
+
+    // Menu list
+    &_ul {
+      visibility: visible;
+      height: auto;
+      opacity: 1;
+      float: left;
+
+      // Dropdowns
+      &-dropdown {
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 10;
+        .z-depth-1;
+
+        .menu_li {
+          display: block !important;
+        }
+
+        .menu_a {
+          line-height:@font-line-height*2;
+          border-bottom: 0 none !important;
+        }
+
+        .menu_li[class*=parent] > .menu_a:after {
+          content: " \25B8";
+        }
+
+        & & {
+          left: 100%; top: 0;
+        }
+      }
+    }
+
+    &_li {
+      display: inline-block;
+    }
+
+    &_a {
+      line-height: @font-line-height*2 - 3px;
+      border-bottom: 3px solid transparent;
+    }
+
+    // Vertical menu
+    &[class*=vert] {
+      .menu_header,
+      .menu_ul {
+        float: none;
+      }
+
+      .menu_li {
+        width: 100%;
+      }
+
+      .menu_li[class*=parent] > a:after {
+        content: ' \25B8';
+      }
+
+      .menu_a {
+        line-height: @font-line-height*2;
+        border: 0 none;
+      }
+
+      .menu_ul-dropdown {
+        left: 100%; top: 0;
+      }
+    }
+
+    // Flat menu
+    &[class*=flat] .menu_ul-dropdown {
+      outline: 1px solid #ddd;
+    }
+
+    // DropTop
+    &[class*=droptop] {
+      .menu_ul-dropdown {
+        top:auto;
+        bottom:100%;
+        .z-depth-1('top');
+
+        .menu_ul-dropdown {
+          bottom:0 !important;
+        }
+
+        .menu_li[class*=parent] > .menu_a:after {
+          content: ' \25B8';
+        }
+      }
+
+      .menu_li[class*=parent] > .menu_a:after {
+        content: " \25B4"
+      }
+    }
+
+    // DropLeft
+    &[class*=dropleft] {
+      .menu_ul-dropdown {
+        right: 0;
+
+        .menu_ul-dropdown {
+          left: auto;
+          right: 100%;
+        }
+      }
+
+      &[class*=vert] {
+        .menu_ul-dropdown {
+          left: auto;
+          right: 100%;
+          bottom: 0;
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,75 @@
+// Component:       Tabs
+// Description:     Define styles for collapsible tabs
+//
+// Block:           'tabs'
+//
+// Elements:        'tabs_content'
+//                  'tabs_item'
+//                  'tabs_trigger'
+//
+// Modifiers:       'tabs_content-flat'
+//
+// Uses:            Menu
+//
+// Markup:
+// <div class="tabs">
+//
+//   <!-- Tabs nav -->
+//   <nav class="menu">
+//     <ul class="menu_ul">
+//       <li class="menu_li"><label class="menu_a" for="tabs_item-1">Home</label></li>
+//       ...
+//     </ul>
+//   </nav>
+//
+//   <!-- Tab panes -->
+//   <div class="tabs_content">
+//     <input id="tabs_item-1" class="tabs_trigger" name="tabs_trigger" type="radio" checked />
+//     <div class="tabs_item">...</div>
+//     ...
+//   </div>
+// </div>
+//
+// ========================================================================
+
+.tabs {
+  margin-bottom: @font-line-height;
+
+  .menu {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    .lh-border-bottom-left-radius(0);
+    .lh-border-bottom-right-radius(0);
+
+    &_ul {
+      display: block;
+    }
+  }
+
+  // Content
+  &_content {
+    width: 100%;
+  }
+
+  &_item {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    .animate(~"opacity");
+  }
+
+  // Hide radio-buttons
+  &_trigger {
+    display: none;
+
+    // Show item content when trigger is checked
+    &:checked + .tabs_item {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+    }
+  }
+
+}

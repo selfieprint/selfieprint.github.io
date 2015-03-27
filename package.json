@@ -1,0 +1,30 @@
+{
+  "name": "Weking",
+  "version": "0.1.0",
+  "description": "A brand-new modern, responsive and flexible front-end framework",
+  "main": "index.js",
+  "url": "https://github.com/weking/",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "grunt": "~0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-less": "~0.11.1",
+    "grunt-contrib-cssmin": "~0.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weking/weking-frontend.git"
+  },
+  "author": "Constantine Karnaukhov",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/weking/weking-frontend/issues"
+  }
+}

@@ -1,0 +1,56 @@
+// Component:       Accordion
+// Description:     Collapsible content panels
+//
+// Block:           'accordion'
+//
+// Elements:        'accordion_item'
+//                  'accordion_item_heading'
+//                  'accordion_item_trigger'
+//                  'accordion_item_content'
+//
+// Uses:            Group
+//
+// Markup:
+// <div class="accordion group">
+//  <label class="accordion_heading" for="accordion-1">Panel 1</label>
+//  <input id="accordion-1" class="accordion_trigger" name="accordion_trigger" type="radio" />
+//  <div class="accordion_content">
+//    ...
+//  </div>
+//   ...
+// </div>
+//
+// ========================================================================
+
+.accordion {
+
+  // Heading
+  &_heading {
+    margin: 0 !important;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Content
+  &_content {
+    // Hide item content by default
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    .animate(~"visibility, opacity, height");
+  }
+
+  // Hide checkboxes and radio-buttons
+  &_trigger {
+    display: none;
+
+    // Show item content when trigger is checked
+    &:checked + .accordion_content {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+    }
+  }
+}

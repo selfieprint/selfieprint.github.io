@@ -1,0 +1,188 @@
+// Block:           Pricing Table
+// Description:     Define styles for pricing table
+//
+// Component:       'pricing'
+//
+// Element:         'pricing_plan'
+//                  'pricing_plan_header'
+//                  'pricing_plan_title'
+//                  'pricing_plan_price'
+//                  'pricing_plan_list'
+//                  'pricing_plan_btn'
+//
+// Modifiers:       'pricing_plan[class*=primary]'
+//                  'pricing_plan[class*=secondary]'
+//                  'pricing_plan[class*=blue]'
+//                  'pricing_plan[class*=green]'
+//                  'pricing_plan[class*=red]'
+//                  'pricing_plan[class*=orange]'
+//                  'pricing_plan[class*=black]'
+//                  'pricing_plan[class*=optimal]'
+//
+// Dependencies:    'btn'
+//
+// Markup:
+// <div class="pricing row">
+//    <!-- Default -->
+//    <div class="pricing_plan col col_sm4">
+//        <div class="pricing_plan_header">
+//            <h3 class="pricing_plan_title">Personal</h3>
+//            <span class="pricing_plan_price">$5 <span>per month</span></span>
+//        </div>
+//        <ul class="pricing_plan_list">
+//            <li>Free setup</li>
+//            <li>Custom sub-domain</li>
+//            <li>Standard customer support</li>
+//            <li>1GB file storage</li>
+//            <li>1 database</li>
+//            <li>Unlimited bandwidth</li>
+//        </ul>
+//        <a href="#" class="pricing_plan_btn btn btn-default-radius-xl">hoose</a>
+//    </div>
+// </div>
+//
+// ========================================================================
+
+/* Pricing table
+   ==================================== */
+.pricing {
+  margin: 0 auto @font-line-height;
+  text-align: center;
+
+  &_plan {
+    background: @grey100;
+
+    // Header
+    &_header {
+      background: @grey;
+      color: @white;
+    }
+
+    // Heading
+    &_title {
+      margin: 0;
+      padding: @font-line-height 0;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+
+    // Price label
+    &_price {
+      .font(@font-line-height*3);
+      display: block;
+      padding: @font-line-height 0;
+      background: @grey700;
+
+      span {
+        display: block;
+        text-transform: uppercase;
+        .font;
+        font-weight: 400;
+        color: @white;
+      }
+    }
+
+    // List of features
+    &_list {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+
+      li {
+        padding: @font-line-height/2 - 0.5px 0;
+        border-bottom: 1px solid @grey;
+      }
+    }
+
+    // Action button
+    &_btn {
+      margin-left: @font-line-height;
+      margin-right: @font-line-height;
+    }
+
+    // Colors
+
+    // primary
+    &[class*=primary] {
+      .pricing_plan_header {
+        background: @primary;
+      }
+
+      .pricing_plan_price {
+        background: @primary700;
+      }
+    }
+
+    // secondary
+    &[class*=secondary] {
+      .pricing_plan_header {
+        background: @secondary;
+      }
+
+      .pricing_plan_price {
+        background: @secondary700;
+      }
+    }
+
+    // Blue
+    &[class*=blue] {
+      .pricing_plan_header {
+        background: @blue;
+      }
+
+      .pricing_plan_price {
+        background: @blue700;
+      }
+    }
+
+    // Green
+    &[class*=green] {
+      .pricing_plan_header {
+        background: @green;
+      }
+
+      .pricing_plan_price {
+        background: @green700;
+      }
+    }
+
+    // Red
+    &[class*=red] {
+      .pricing_plan_header {
+        background: @red;
+      }
+
+      .pricing_plan_price {
+        background: @red700;
+      }
+    }
+
+    // Orange
+    &[class*=orange] {
+      .pricing_plan_header {
+        background: @orange;
+      }
+
+      .pricing_plan_price {
+        background: @orange700;
+      }
+    }
+
+    // Black
+    &[class*=black] {
+      .pricing_plan_header {
+        background: @grey800;
+      }
+
+      .pricing_plan_price {
+        background: @grey900;
+      }
+    }
+
+    // Optimal plan
+    &[class*=optimal] {
+      .lh-transform(~"scale(1.05)");
+    }
+  }
+
+}

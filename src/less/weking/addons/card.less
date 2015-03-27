@@ -1,0 +1,109 @@
+// Block:           Card
+// Description:     Defines styles for information messages
+//
+// Component:       'card'
+//
+// Elements:        'card_header'
+//                  'card_content'
+//                  'card_title'
+//                  'card_img'
+//
+// Modifiers:       'card-primary'
+//                  'card-secondary'
+//                  'card-black'
+//                  'card-tile'
+//                  'card-left'
+//                  'card-right'
+//
+// Markup:
+//
+// <div class="col col-sm4 col_inner">
+//     <div class="card">
+//         <header class="card_header">
+//             <img src="path/to/image" class="card_img"/>
+//             <h2 class="card_title">...</h2>
+//         </header>
+//         <div class="card_content">
+//             ...
+//         </div>
+//     </div>
+// </div>
+//
+// ========================================================================
+
+.card {
+  margin: 0 0 @font-line-height;
+  .card-gen(@white, @grey900);
+  .lh-border-radius(@basic-radius);
+  .z-depth-1;
+
+  // Header
+  &_header {
+    position: relative;
+    color: @white;
+
+    // Heading in header
+    .card_title {
+      position: absolute;
+      bottom: @font-line-height;
+      left: @font-line-height;
+      right: @font-line-height;
+      word-wrap: break-word;
+    }
+  }
+
+  // Image
+  &_img {
+    margin: 0;
+    width: 100%;
+    .lh-border-top-left-radius(@basic-radius);
+    .lh-border-top-right-radius(@basic-radius);
+  }
+
+  // Heading
+  //&_title {}
+
+  // Content
+  &_content {
+    padding: @font-line-height;
+  }
+
+  // Left & Right side
+  &[class*=left] {
+    .card_img {
+      .lh-border-top-right-radius(0);
+      .lh-border-bottom-left-radius(@basic-radius);
+
+    }
+  }
+
+  &[class*=right] {
+    .card_header, .card_content {
+      float: right;
+    }
+
+    .card_img {
+      .lh-border-top-left-radius(0);
+      .lh-border-bottom-right-radius(@basic-radius);
+    }
+  }
+
+  // Colors
+
+  &[class*=primary] {
+    .card-gen(@primary, @white);
+  }
+
+  &[class*=secondary] {
+    .card-gen(@secondary, @white);
+  }
+
+  &[class*=black] {
+    .card-gen(@grey900, @white);
+  }
+
+  // Tile
+  &[class*=tile] {
+    .lh-border-radius(0);
+  }
+}

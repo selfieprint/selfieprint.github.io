@@ -1,0 +1,254 @@
+// Component:       Tooltip and Popover
+// Description:     Define styles for tooltips that shows some content on hover.
+//                  Popover like tooltips, but showed by click and  uses HTML
+//
+// Blocks:          'tooltip'
+//
+// Modifiers:       'tooltip-top'
+//                  'tooltip-bottom'
+//                  'tooltip-left'
+//                  'tooltip-right'
+//                  'tooltip-primary'
+//                  'tooltip-secondary'
+//                  'tooltip-blue'
+//                  'tooltip-green'
+//                  'tooltip-red'
+//                  'tooltip-orange'
+//                  'tooltip-black'
+//                  'tooltip-always'
+//                  'tooltip-radius'
+//
+// Markup:
+// <span class="tooltip tooltip-top" data-tooltip="Tooltip on top">Tooltip on top</span>
+// <span class="tooltip tooltip-right" data-tooltip="Tooltip on right">Tooltip on right</span>
+// <span class="tooltip tooltip-bottom" data-tooltip="Tooltip on bottom">Tooltip on bottom</span>
+// <span class="tooltip tooltip-left" data-tooltip="Tooltip on left">Tooltip on left</span>
+//
+// ========================================================================
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  // Tooltip
+  &:after {
+    position: absolute;
+    z-index: 2;
+    content: attr(data-tooltip);
+    padding: @font-line-height/4 8px;
+    white-space: nowrap;
+    background: @grey300;
+    color: @grey900;
+    .font(12px);
+    visibility: hidden;
+    .lh-opacity(0);
+    .lh-border-radius(@basic-radius);
+    .animate(~"opacity, visibility");
+  }
+
+  // Show tooltip on hover
+  &:hover:after {
+    visibility: visible;
+    .lh-opacity(1);
+  }
+
+  // Top
+  &[class*=top]:after {
+    bottom: 100%;
+    left: 0;
+  }
+
+  // Bottom
+  &[class*=bottom]:after {
+    top: 100%;
+    left: 0;
+  }
+
+  // Right
+  &[class*=right]:after {
+    left: 100%;
+    top: 0;
+  }
+
+  // Left
+  &[class*=left]:after {
+    right: 100%;
+    top: 0;
+  }
+
+  // Colors
+  &[class*=primary]:after {
+    background-color: @primary;
+    color: @white;
+  }
+
+  &[class*=secondary]:after {
+    background-color: @secondary;
+    color: @white;
+  }
+
+  &[class*=blue]:after {
+    background-color: @blue;
+    color: @white;
+  }
+
+  &[class*=green]:after {
+    background-color: @green;
+    color: @white;
+  }
+
+  &[class*=red]:after {
+    background-color: @red;
+    color: @white;
+  }
+
+  &[class*=orange]:after {
+    background-color: @orange;
+    color: @white;
+  }
+
+  &[class*=black]:after {
+    background-color: @grey900;
+    color: @white;
+  }
+
+  // Always showed
+  &[class*=always]:after {
+    visibility: visible;
+    height: auto;
+    .lh-opacity(1);
+  }
+
+  // Rounded corners
+  &[class*=radius]:after {
+    .lh-border-radius(99px);
+  }
+}
+
+// Component:       Popover
+// Description:     Define styles for Popovers that shows some content uses HTML on click.
+//
+// Blocks:          'popover'
+//
+// Elements:        'popover_content'
+//                  'popover_trigger'
+//
+// Modifiers:       'popover-top'
+//                  'popover-bottom'
+//                  'popover-left'
+//                  'popover-right'
+//                  'popover-primary'
+//                  'popover-secondary'
+//                  'popover-blue'
+//                  'popover-green'
+//                  'popover-red'
+//                  'popover-orange'
+//                  'popover-black'
+//                  'popover-radius'
+//
+// Markup:
+// <div class="popover popover-top-primary-radius">
+//      <label for="popoverTest">Show popover</label>
+//      <input type="checkbox" id="popoverTest" name="popoverTest" class="popover_trigger"/>
+//      <div class="popover_content">
+//          <h4>Popover heading</h4>
+//          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam beatae, cupiditate</p>
+//      </div>
+// </div>
+//
+// ========================================================================
+
+.popover {
+  position: relative;
+  display: inline-block;
+
+  // Popover
+  &_content {
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    padding: @font-line-height/4 8px;
+    background: @grey300;
+    color: @grey900;
+    visibility: hidden;
+    .lh-opacity(0);
+    .lh-border-radius(@basic-radius);
+    .animate(~"opacity, visibility");
+  }
+
+  // Hide trigger
+  &_trigger {
+    display: none;
+  }
+
+  // Show popover when trigger is checked
+  &_trigger:checked + &_content {
+    visibility: visible;
+    .lh-opacity(1);
+  }
+
+  // Top
+  &[class*=top] &_content {
+    bottom: 100%;
+    left: 0;
+  }
+
+  // Bottom
+  &[class*=bottom] &_content {
+    top: 100%;
+    left: 0;
+  }
+
+  // Right
+  &[class*=right] &_content {
+    left: 100%;
+    top: 0;
+  }
+
+  // Left
+  &[class*=left] &_content {
+    right: 100%;
+    top: 0;
+  }
+
+  // Colors
+  &[class*=primary] &_content {
+    background-color: @primary;
+    color: @white;
+  }
+
+  &[class*=secondary] &_content {
+    background-color: @secondary;
+    color: @white;
+  }
+
+  &[class*=blue] &_content {
+    background-color: @blue;
+    color: @white;
+  }
+
+  &[class*=green] &_content {
+    background-color: @green;
+    color: @white;
+  }
+
+  &[class*=red] &_content {
+    background-color: @red;
+    color: @white;
+  }
+
+  &[class*=orange] &_content {
+    background-color: @orange;
+    color: @white;
+  }
+
+  &[class*=black] &_content {
+    background-color: @grey900;
+    color: @white;
+  }
+
+  // Rounded corners
+  &[class*=radius] &_content {
+    .lh-border-radius(99px);
+  }
+}

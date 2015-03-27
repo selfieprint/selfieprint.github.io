@@ -1,0 +1,348 @@
+// Component:       Base
+// Description:     Collection of useful utilities to style your content
+//
+// ========================================================================
+
+.font-setup;
+
+/* CSS-Reset v2 by http://meyerweb.com/eric/tools/css/reset/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q {
+  quotes: none;
+
+  &:before, &:after {
+    content: '';
+    content: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Reset the box-sizing
+
+html {
+  .lh-box-sizing(~"border-box");
+}
+
+*,
+*:before,
+*:after {
+  .lh-box-sizing(~"inherit");
+}
+
+body {
+  position: relative;
+  background-color: @body-bg;
+  color: @text-color;
+  .font;
+  font-family: @font-family;
+}
+
+// TYPOGRAPHY
+
+[class^=typo] {
+  display: block;
+}
+
+// Display 4
+.typo_display4 {
+  .font(112px);
+  font-weight: 300;
+}
+
+// Display 3
+.typo_display3 {
+  .font(56px);
+}
+
+// Display 2
+.typo_display2 {
+  .font(45px);
+}
+
+// Display 1
+.typo_display1 {
+  .font(34px);
+}
+
+// Headline
+.typo_headline {
+  .font(24px);
+}
+
+// Title
+.typo_title {
+  .font(20px);
+  font-weight: 500;
+}
+
+// Subhead
+.typo_subhead {
+  .font(16px);
+}
+
+// Caption
+.typo_caption {
+  .font(12px);
+}
+
+// Headings styles
+.typo_h1, h1,
+.typo_h2, h2,
+.typo_h3, h3,
+.typo_h4, h4,
+.typo_h5, h5,
+.typo_h6, h6 {
+  font-weight: 900;
+  font-family: @font-family-headings;
+}
+
+.typo_h1, h1 {
+  .font(@font-size*3.75);
+}
+
+.typo_h2, h2 {
+  .font(@font-size*3);
+}
+
+.typo_h3, h3 {
+  .font(@font-size*2.25);
+}
+
+.typo_h4, h4 {
+  .font(@font-size*1.5);
+}
+
+.typo_h5, h5 {
+  .font(@font-size);
+}
+
+.typo_h6, h6 {
+  .font(@font-size*0.75);
+}
+
+// Define block elements styles
+
+blockquote {
+  padding: 0 @font-line-height;
+  border-left: @font-line-height/4 solid @grey;
+  color: @grey900;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid @grey300;
+  border-bottom: 1px solid @white;
+  margin: (@font-line-height - 2px)/2 0;
+}
+
+// Reset basic margin for nested lists and set left indent
+
+ol,
+ul {
+  padding: 0 0 0 @font-line-height*2;
+  ol,
+  ul {
+    margin: 0;
+  }
+}
+
+nav ul,
+nav ol {
+  list-style: none;
+}
+
+// Define styles for definition list
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0 @font-line-height*2;
+}
+
+p,
+blockquote,
+dl,
+menu,
+ol,
+ul,
+dd,
+img,
+pre {
+    margin-bottom: @font-line-height;
+}
+
+// Define inline elements styles
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+i,
+cite,
+em,
+var,
+dfn {
+  font-style: italic;
+}
+
+label {
+  cursor: pointer;
+}
+
+a {
+  color: @link-color;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: none;
+  }
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+mark {
+  background: @orange400;
+  color: @grey900;
+}
+
+small {
+  font-size: 80%;
+  line-height: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+// Code
+
+code,
+pre,
+kbd {
+  font-family: @font-family-mono;
+}
+
+code, kbd {
+  padding: 2px 4px;
+  font-size: @font-size * 0.9;
+  line-height: @font-size * 0.9;
+  color: @red600;
+  white-space: nowrap;
+  background: @grey200;
+  .lh-border-radius(@basic-radius);
+}
+
+kbd {
+  color: @text-color;
+}
+
+pre {
+  display: block;
+  padding: 0 16px;
+  font-size: @font-size * 0.9;
+  color: @grey900;
+  background: @grey200;
+  outline: 1px solid @grey;
+  overflow: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+
+  code {
+    padding: 0;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+  }
+}
+
+// Images
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+  display: block;
+
+  &[class*=polaroid] {
+    background-color: @white;
+    outline: 1px solid rgba(0, 0, 0, 0.2);
+    outline-offset: 4px;
+  }
+
+  &[class*=radius] {
+    .lh-border-radius(100%);
+  }
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+// Alignment
+
+.alignleft {
+  float: left !important;
+}
+
+.alignright {
+  float: right !important;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

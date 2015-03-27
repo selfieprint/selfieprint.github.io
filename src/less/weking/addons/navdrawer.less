@@ -1,0 +1,88 @@
+// Component:       Navigation Drawer
+// Description:     Collapsible content panels
+//
+// Block:           'navDrawer'
+//
+// Elements:        'accordion_item'
+//                  'accordion_item_heading'
+//                  'accordion_item_trigger'
+//                  'accordion_item_content'
+//
+// Uses:            Button, Group
+//
+// Markup:
+// <label for="navDrawer_trigger-1">Panel 1</label>
+// <input id="navDrawer_trigger-1" class="navDrawer_trigger" name="navDrawer_trigger" type="checkbox" />
+// <section class="navDrawer">
+//   <label class="navDrawer_overlay" for="navDrawer_trigger-1"></label>
+//   <section class="navDrawer_content">
+//
+//   </section>
+// </section>
+//
+// ========================================================================
+
+.navDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; // Hide navDrawer block
+
+  // Overlay
+  &_overlay {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    .animate(~"background");
+  }
+
+  // Content
+  &_content {
+    position: absolute;
+    height: 100%;
+    left: -100%;
+    background: @white;
+    overflow-y: auto;
+    .z-depth-1('right');
+    .animate(~"opacity, visibility, left, right");
+
+    // Right position
+    &[class*=right] {
+      left: auto;
+      right: -100%;
+      .z-depth-1('left');
+    }
+  }
+
+  // Trigger
+  &_trigger {
+    display: none;
+
+    // Show navDrawer when trigger checked
+    &:checked {
+      + .navDrawer {
+        z-index: 20;
+
+        & .navDrawer_content {
+          left: 0;
+
+          // Right position
+          &[class*=right] {
+            left: auto;
+            right: 0;
+          }
+        }
+
+        & .navDrawer_overlay {
+          background: fade(@black, 60%);
+        }
+      }
+    }
+  }
+}
