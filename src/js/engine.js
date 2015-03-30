@@ -16,9 +16,9 @@ var Photo = function (url, user, caption) {
 * Get Photos By Hashtag
 * */
 
-function getPhotoByTag (tagname, $http) {
+function getPhotoByTag(tagname, $http) {
   // Generate Tag Query
-  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ SESSION.access_token;
+  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ localStorage.accessToken;
   var images = [];
 
   // Get Data from Instagram
@@ -38,27 +38,34 @@ function getPhotoByTag (tagname, $http) {
 
 /*
 * Authentication
+*   localStorage.authStep
+*   0 - need auth
+*   1 - get access token
+*   2 - access token in localStorage
 * */
 
-function Authentication () {
-  var step = localStorage.getItem("AuthorizeStep");
-
-  if (step == 0) {
-    // Update AuthorizeStep
-    localStorage.setItem("AuthorizeStep", 1);
+function Auth() {
+  if (localStorage.authStep == 0) {
+    // Update authStep
+    localStorage.authStep = 1;
     // Redirect to Instagram auth page
-    window.location.href = "https://instagram.com/oauth/authorize/?client_id="+ SESSION.client_id +"&redirect_uri="+ window.location.href +"&response_type=token";
+    window.location.href = "https://instagram.com/oauth/authorize/?client_id="+ localStorage.clientId +"&redirect_uri="+ window.location.href +"&response_type=token";
   } else {
     // Parse access token
-    var url = window.location.href;
-    var slice = "access_token=";
-    var index = url.indexOf(slice);
+    var url = window.location.href,
+      slice = "access_token=",
+      index = url.indexOf(slice);
 
     if (index != -1) {
-      SESSION.access_token = url.substring(index + slice.length);
+      // Get access token
+      localStorage.accessToken = url.substring(index + slice.length);
+      // Update authStep
+      localStorage.authStep = 2;
+      console.log('Auth success');
     } else {
-      // TODO: catch error with auth
-
+      // Reset authStep
+      localStorage.authStep = 0;
+      console.log("You need auth");
     }
 
   }
