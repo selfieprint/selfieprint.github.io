@@ -19,22 +19,18 @@ var Photo = function (large, thumb, user, caption) {
 
 function getPhotoByTag(tagname, $http) {
   // Generate Tag Query
-  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ localStorage.accessToken;
+  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ localStorage.accessToken + '&callback=JSON_CALLBACK';
   var images = [];
 
   // Get Data from Instagram
   $http.jsonp(query).success(function (response) {
-    var responseJSON = JSON.parse(response.data);
-
-    console.log(responseJSON);
-
     // Fill array with images
-    for (var i = 0; i < responseJSON.length; i++) {
+    for (var i = 0; i < response.data.length; i++) {
       images[i] = new Photo(
-        responseJSON.data[i].images.standard_resolution.url,
-        responseJSON.data[i].images.thumbnail.url,
-        responseJSON.data[i].user,
-        responseJSON.data[i].caption.text
+        response.data[i].images.standard_resolution.url,
+        response.data[i].images.thumbnail.url,
+        response.data[i].user,
+        response.data[i].caption.text
       );
     }
   });

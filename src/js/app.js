@@ -19,15 +19,9 @@ function MainCTRL($scope, $http) {
     $scope.page = includes.landing;
 
 
-  var searchForm = document.querySelector('.search'),
-    searchInput = document.getElementById('search_hashtag');
-
   $scope.search_hashtag = '';
-
   $scope.searchFormSubmit = function (search_hashtag) {
-    console.log(search_hashtag);
     main.images = getPhotoByTag(search_hashtag, $http);
-    console.log(main.images);
   }
 
 }

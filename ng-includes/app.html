@@ -29,9 +29,9 @@
 
   <!-- Result -->
   <div class="photos_result row">
-    <article class="col col_xs4" ng-repeat="selfie in main.images">
+    <article class="col col_xs4" ng-repeat="image in main.images">
       <input type="checkbox"/>
-      <img ng-src="{{selfie.thumb}}" alt=""/>
+      <img ng-src="{{image.thumb}}" alt=""/>
     </article>
   </div>
 </section>
