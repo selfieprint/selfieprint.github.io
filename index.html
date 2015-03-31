@@ -36,9 +36,11 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
   <![endif]-->
 </head>
-<body ng-controller="MainCTRL">
-  <h1 class="typo_display4">Selfie Printer</h1>
-  <p>Amazing app coming soon.</p>
+<body class="container" ng-controller="MainCTRL as main">
+
+  <section class="app" ng-include="main.source">
+    {{main.page}}
+  </section>
 
   <script src="dist/js/angular.min.js"></script>
   <script src="src/js/engine.js"></script>

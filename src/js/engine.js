@@ -2,8 +2,9 @@
 * Class Photo
 * */
 
-var Photo = function (url, user, caption) {
-  this.url = url;
+var Photo = function (large, thumb, user, caption) {
+  this.large = large;
+  this.thumb = thumb;
   this.user = user;
     //username": "kevin",
     //"full_name": "Kevin S",
@@ -27,6 +28,7 @@ function getPhotoByTag(tagname, $http) {
     for (var i = 0; i < response.data.length; i++) {
       images[i] = new Photo(
         response.data[i].images.standard_resolution.url,
+        response.data[i].images.thumbnail.url,
         response.data[i].user,
         response.data[i].caption.text
       );
@@ -45,12 +47,18 @@ function getPhotoByTag(tagname, $http) {
 * */
 
 function Auth() {
+  // Check was user authorized
+  if (localStorage.authStep != 1 && localStorage.authStep != 2) {
+    localStorage.authStep = 0;
+  }
+
   if (localStorage.authStep == 0) {
     // Update authStep
     localStorage.authStep = 1;
     // Redirect to Instagram auth page
     window.location.href = "https://instagram.com/oauth/authorize/?client_id="+ localStorage.clientId +"&redirect_uri="+ window.location.href +"&response_type=token";
-  } else {
+  }
+  else if (localStorage.authStep == 1) {
     // Parse access token
     var url = window.location.href,
       slice = "access_token=",
@@ -67,6 +75,19 @@ function Auth() {
       localStorage.authStep = 0;
       console.log("You need auth");
     }
-
   }
+
+  console.log('Already authorized');
+  return true;
+}
+
+/*
+* Exit
+* Clear access token and reset authStep on exit
+* */
+
+function Exit() {
+  localStorage.accessToken = "";
+  localStorage.authStep = 0;
+  return true;
 }
