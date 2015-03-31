@@ -6,4 +6,29 @@
  * Author: Constantine Karnaukhov
  * License: MIT License
  */
+.navbar {
+  text-align: center;
+}
+.navbar .menu_brand {
+  float: none;
+}
+.app {
+  padding: 24px 0;
+}
+.search {
+  margin-bottom: 24px;
+}
+.search .group_addon {
+  display: inline-block;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.search .form_control {
+  width: 100%;
+}
+.photos_filter {
+  text-align: center;
+  margin-bottom: 24px;
+}
 /*# sourceMappingURL=weking-theme.css.map */

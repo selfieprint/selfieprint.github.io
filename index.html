@@ -36,11 +36,15 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
   <![endif]-->
 </head>
-<body class="container" ng-controller="MainCTRL as main">
+<body ng-controller="MainCTRL as main">
 
-  <section class="app" ng-include="main.source">
-    {{main.page}}
-  </section>
+  <nav class="navbar menu menu-primary">
+    <div class="menu_header col col_xs12">
+      <a href="#" class="menu_a menu_brand">Selfie Print</a>
+    </div>
+  </nav>
+
+  <main class="app container" ng-include="page"></main>
 
   <script src="dist/js/angular.min.js"></script>
   <script src="src/js/engine.js"></script>

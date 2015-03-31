@@ -1,14 +1,12 @@
-// Define session information in localStorage
-localStorage.clientId = "c5004e18b7474d4cb26c1f76af8ab98e";
-localStorage.accessToken = "";
-
 // Init Authentication
 Auth();
 
 // Init Angular
 var app = angular.module('selfieprint', [ ]);
 
-function MainCTRL($http) {
+app.controller('MainCTRL', [ '$scope', '$http',  MainCTRL ]);
+
+function MainCTRL($scope, $http) {
   var main = this,
     includes = {
       landing: "ng-includes/landing.html",
@@ -16,11 +14,20 @@ function MainCTRL($http) {
     };
 
   if (localStorage.authStep != 0)
-    main.source = includes.app;
+    $scope.page = includes.app;
   else
-    main.source = includes.landing;
+    $scope.page = includes.landing;
 
+
+  var searchForm = document.querySelector('.search'),
+    searchInput = document.getElementById('search_hashtag');
+
+  $scope.search_hashtag = '';
+
+  $scope.searchFormSubmit = function (search_hashtag) {
+    console.log(search_hashtag);
+    main.images = getPhotoByTag(search_hashtag, $http);
+    console.log(main.images);
+  }
 
 }
-
-app.controller('MainCTRL', [ '$http',  MainCTRL ]);

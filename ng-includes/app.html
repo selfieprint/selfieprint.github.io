@@ -1,2 +1,37 @@
-<h1 class="typo_display4">Selfie Printer</h1>
-<p>You successfully logged in. Cool!</p>
+<!-- Search -->
+<form class="form search" ng-submit="searchFormSubmit(search_hashtag)">
+  <div class="row">
+    <div class="col col_xs1">
+      <label class="group_addon" for="search_hashtag">#</label>
+    </div>
+    <div class="col col_xs10">
+      <input class="form_control" ng-model="search_hashtag" id="search_hashtag" name="search_hashtag" type="text" placeholder="Enter Instagram hashtag"/>
+    </div>
+    <div class="col col_xs1">
+      <button class="btn btn-primary" type="submit"><i class="icon icon_search"></i></button>
+    </div>
+  </div>
+</form>
+
+<!-- Photos -->
+<section class="photos">
+  <!-- View filter -->
+  <nav class="photos_filter menu menu-flat">
+    <div class="menu_header row">
+      <a href="#" class="menu_a menu_brand col col_xs6">
+        <i class="icon icon_apps"></i>
+      </a>
+      <a href="#" class="menu_a menu_brand col col_xs6">
+        <i class="icon icon_dehaze"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Result -->
+  <div class="photos_result row">
+    <article class="col col_xs4" ng-repeat="selfie in main.images">
+      <input type="checkbox"/>
+      <img ng-src="{{selfie.thumb}}" alt=""/>
+    </article>
+  </div>
+</section>

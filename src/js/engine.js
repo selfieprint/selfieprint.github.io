@@ -23,14 +23,18 @@ function getPhotoByTag(tagname, $http) {
   var images = [];
 
   // Get Data from Instagram
-  $http.get(query).success(function (response) {
+  $http.jsonp(query).success(function (response) {
+    var responseJSON = JSON.parse(response.data);
+
+    console.log(responseJSON);
+
     // Fill array with images
-    for (var i = 0; i < response.data.length; i++) {
+    for (var i = 0; i < responseJSON.length; i++) {
       images[i] = new Photo(
-        response.data[i].images.standard_resolution.url,
-        response.data[i].images.thumbnail.url,
-        response.data[i].user,
-        response.data[i].caption.text
+        responseJSON.data[i].images.standard_resolution.url,
+        responseJSON.data[i].images.thumbnail.url,
+        responseJSON.data[i].user,
+        responseJSON.data[i].caption.text
       );
     }
   });
@@ -47,6 +51,9 @@ function getPhotoByTag(tagname, $http) {
 * */
 
 function Auth() {
+  // Define session information in localStorage
+  localStorage.clientId = "c5004e18b7474d4cb26c1f76af8ab98e";
+
   // Check was user authorized
   if (localStorage.authStep != 1 && localStorage.authStep != 2) {
     localStorage.authStep = 0;
@@ -89,5 +96,5 @@ function Auth() {
 function Exit() {
   localStorage.accessToken = "";
   localStorage.authStep = 0;
-  return true;
+  //return true;
 }
