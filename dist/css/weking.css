@@ -1752,13 +1752,13 @@ textarea {
   font-style: normal;
 }
 .icon {
+  vertical-align: top;
   font-style: normal;
   display: inline-block;
-  font-family: 'Material Design Iconic Font';
+  font-family: 'Material Design Iconic Font', sans-serif;
   speak: none;
   text-rendering: auto;
   font-size: 24px;
-  vertical-align: top;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4093,13 +4093,13 @@ textarea {
 }
 .form_checkbox + span:before,
 .form_radio + span:before {
+  vertical-align: top;
   font-style: normal;
   display: inline-block;
-  font-family: 'Material Design Iconic Font';
+  font-family: 'Material Design Iconic Font', sans-serif;
   speak: none;
   text-rendering: auto;
   font-size: 24px;
-  vertical-align: top;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-transition: color 0.15s ease;

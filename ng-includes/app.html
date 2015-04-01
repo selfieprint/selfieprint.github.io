@@ -16,24 +16,31 @@
 <!-- View switcher -->
 <nav class="view_switch menu menu-flat">
   <div class="menu_header row">
-    <a href="#" class="menu_a menu_brand col col_xs6">
+    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="view = '-gutters -grid'">
       <i class="icon icon_apps"></i>
     </a>
-    <a href="#" class="menu_a menu_brand col col_xs6">
+    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="view = '-list'">
       <i class="icon icon_dehaze"></i>
     </a>
   </div>
 </nav>
 
 <!-- Photos -->
-<section class="photos row row-gutters">
+<section ng-class="'photos row ' + view">
 
-  <div class="col col_xs4" ng-repeat="image in main.images">
+  <div class="col" ng-repeat="image in main.images">
+    <input class="photos_item_checkbox" id="{{ 'photos_item_checkbox' + image.id }}" type="checkbox"/>
     <article class="photos_item">
-      <label>
-        <input type="checkbox"/>
+      <label class="photos_item_content" for="{{ 'photos_item_checkbox' + image.id }}">
         <img ng-src="{{image.thumb}}" alt=""/>
       </label>
+      <div class="photos_item_meta clearfix">
+        <img ng-src="{{image.user.profile_picture}}" class="photos_item_meta_avatar" alt=""/>
+        <span class="photos_item_meta_name">{{image.user.full_name}}</span>
+        <a href="{{image.link}}" class="photos_item_meta_insta" target="_blank">
+          <i class="icon icon_open-in-new"></i>
+        </a>
+      </div>
     </article>
   </div>
 

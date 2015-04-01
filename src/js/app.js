@@ -19,9 +19,13 @@ function MainCTRL($scope, $http) {
     $scope.page = includes.landing;
 
 
+  // Search by hash tag
   $scope.search_hashtag = '';
   $scope.searchFormSubmit = function (search_hashtag) {
     main.images = getPhotoByTag(search_hashtag, $http);
-  }
+  };
+
+  // View switch
+  $scope.view = '-gutters -grid';
 
 }

@@ -2,15 +2,17 @@
 * Class Photo
 * */
 
-var Photo = function (large, thumb, user, caption) {
+var Photo = function (id, large, thumb, caption, user, link) {
+  this.id = id;
   this.large = large;
   this.thumb = thumb;
+  this.caption = caption;
   this.user = user;
     //username: kevin,
     //full_name: Kevin S,
     //profile_picture: ...,
     //id: 3
-  this.caption = caption;
+  this.link = link;
 };
 
 /*
@@ -27,10 +29,12 @@ function getPhotoByTag(tagname, $http) {
     // Fill array with images
     for (var i = 0; i < response.data.length; i++) {
       images[i] = new Photo(
+        response.data[i].id,
         response.data[i].images.standard_resolution.url,
-        response.data[i].images.thumbnail.url,
+        response.data[i].images.low_resolution.url,
+        response.data[i].caption.text,
         response.data[i].user,
-        response.data[i].caption.text
+        response.data[i].link
       );
     }
   });
