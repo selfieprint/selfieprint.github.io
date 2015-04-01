@@ -88,8 +88,10 @@
 
 // Container
 .container {
-  margin: 0 auto;
-  .make-column(@container-size);
-  max-width: @container-max-width;
   &:extend(.clearfix all);
+  @media (min-width: @screen-sm) {
+    margin: 0 auto;
+    .make-column(@container-size);
+    max-width: @container-max-width;
+  }
 }

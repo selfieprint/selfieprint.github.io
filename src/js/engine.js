@@ -6,10 +6,10 @@ var Photo = function (large, thumb, user, caption) {
   this.large = large;
   this.thumb = thumb;
   this.user = user;
-    //username": "kevin",
-    //"full_name": "Kevin S",
-    //"profile_picture": "...",
-    //"id": "3"
+    //username: kevin,
+    //full_name: Kevin S,
+    //profile_picture: ...,
+    //id: 3
   this.caption = caption;
 };
 

@@ -27,8 +27,19 @@
 .search .form_control {
   width: 100%;
 }
-.photos_filter {
+.view_switch {
   text-align: center;
   margin-bottom: 24px;
+}
+.photos_item {
+  background: #ffffff;
+}
+.photos_item img {
+  width: 100%;
+}
+.photos_item:hover {
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 /*# sourceMappingURL=weking-theme.css.map */

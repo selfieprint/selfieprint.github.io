@@ -13,25 +13,28 @@
   </div>
 </form>
 
-<!-- Photos -->
-<section class="photos">
-  <!-- View filter -->
-  <nav class="photos_filter menu menu-flat">
-    <div class="menu_header row">
-      <a href="#" class="menu_a menu_brand col col_xs6">
-        <i class="icon icon_apps"></i>
-      </a>
-      <a href="#" class="menu_a menu_brand col col_xs6">
-        <i class="icon icon_dehaze"></i>
-      </a>
-    </div>
-  </nav>
+<!-- View switcher -->
+<nav class="view_switch menu menu-flat">
+  <div class="menu_header row">
+    <a href="#" class="menu_a menu_brand col col_xs6">
+      <i class="icon icon_apps"></i>
+    </a>
+    <a href="#" class="menu_a menu_brand col col_xs6">
+      <i class="icon icon_dehaze"></i>
+    </a>
+  </div>
+</nav>
 
-  <!-- Result -->
-  <div class="photos_result row">
-    <article class="col col_xs4" ng-repeat="image in main.images">
-      <input type="checkbox"/>
-      <img ng-src="{{image.thumb}}" alt=""/>
+<!-- Photos -->
+<section class="photos row row-gutters">
+
+  <div class="col col_xs4" ng-repeat="image in main.images">
+    <article class="photos_item">
+      <label>
+        <input type="checkbox"/>
+        <img ng-src="{{image.thumb}}" alt=""/>
+      </label>
     </article>
   </div>
+
 </section>

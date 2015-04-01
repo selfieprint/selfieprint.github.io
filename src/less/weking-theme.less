@@ -35,9 +35,21 @@
   }
 }
 
+.view_switch {
+  text-align: center;
+  margin-bottom: @font-line-height;
+}
+
 .photos {
-  &_filter {
-    text-align: center;
-    margin-bottom: @font-line-height;
+  &_item {
+    background: @white;
+
+    img {
+      width: 100%;
+    }
+
+    &:hover {
+      .z-depth-1;
+    }
   }
 }

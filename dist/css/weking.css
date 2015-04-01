@@ -851,10 +851,12 @@ svg:not(:root) {
     margin-right: 91.66666667%;
   }
 }
-.container {
-  margin: 0 auto;
-  width: 66.66666667%;
-  max-width: 1200px;
+@media (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+    width: 66.66666667%;
+    max-width: 1200px;
+  }
 }
 .form_control,
 .btn {
