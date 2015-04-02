@@ -45,6 +45,12 @@
 
 // Photos List
 .photos {
+  // Small padding over items
+  .col {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
   &_item {
     background: @white;
     margin-bottom: @font-line-height;
@@ -127,18 +133,19 @@
     .photos_item {
       &:hover {
         .z-depth-2;
-
-        //.photos_item_meta {
-        //  bottom: -3*@font-line-height;
-        //}
       }
 
-      //&_meta {
-      //  position: absolute;
-      //  width: 100%;
-      //  bottom: 0;
-      //  .animate(~"bottom");
-      //}
+      &_meta {
+        &_name {
+          max-width: 70px;
+          height: @font-line-height*2;
+          overflow: hidden;
+
+          @media (min-width: @screen-lg) {
+            max-width: 120px;
+          }
+        }
+      }
     }
   }
 

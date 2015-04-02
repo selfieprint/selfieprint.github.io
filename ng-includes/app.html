@@ -16,23 +16,23 @@
 <!-- View switcher -->
 <nav class="view_switch menu menu-flat">
   <div class="menu_header row">
-    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="view = '-gutters -grid'">
+    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="main.view = '-grid'">
       <i class="icon icon_apps"></i>
     </a>
-    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="view = '-list'">
+    <a href="#" class="menu_a menu_brand col col_xs6" ng-click="main.view = '-list'">
       <i class="icon icon_dehaze"></i>
     </a>
   </div>
 </nav>
 
 <!-- Photos -->
-<section ng-class="'photos row ' + view">
+<section ng-class="'photos row ' + main.view">
 
   <div class="col" ng-repeat="image in main.images">
     <input class="photos_item_checkbox" id="{{ 'photos_item_checkbox' + image.id }}" type="checkbox"/>
     <article class="photos_item">
       <label class="photos_item_content" for="{{ 'photos_item_checkbox' + image.id }}">
-        <img ng-src="{{image.thumb}}" alt=""/>
+        <img ng-src="{{ main.view === '-list' ? image.large : image.thumb}}" alt=""/>
       </label>
       <div class="photos_item_meta clearfix">
         <img ng-src="{{image.user.profile_picture}}" class="photos_item_meta_avatar" alt=""/>

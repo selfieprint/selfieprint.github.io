@@ -26,6 +26,10 @@ function MainCTRL($scope, $http) {
   };
 
   // View switch
-  $scope.view = '-gutters -grid';
+  //$scope.viewsList = {
+  //  list: "",
+  //  grid: ""
+  //};
+  main.view = '-grid';
 
 }
