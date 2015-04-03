@@ -29,9 +29,9 @@
 <section ng-class="'photos row ' + main.view">
 
   <div class="col" ng-repeat="image in main.images">
-    <input class="photos_item_checkbox" id="{{ 'photos_item_checkbox' + image.id }}" type="checkbox"/>
+    <input class="photos_item_checkbox" id="{{ 'photos_item_checkbox_' + $index }}" name="{{$index}}" type="checkbox"/>
     <article class="photos_item">
-      <label class="photos_item_content" for="{{ 'photos_item_checkbox' + image.id }}">
+      <label class="photos_item_content" for="{{ 'photos_item_checkbox_' + $index }}">
         <img ng-src="{{ main.view === '-list' ? image.large : image.thumb}}" alt=""/>
       </label>
       <div class="photos_item_meta clearfix">
@@ -45,3 +45,11 @@
   </div>
 
 </section>
+
+<div class="fab">
+  <span class="fab_1 tooltip tooltip-left" data-tooltip="Print Images" ng-click="main.printPhotos()">
+    <a class="fab_btn btn btn-secondary-radius">
+      <i class="icon icon_arrow-forward"></i>
+    </a>
+  </span>
+</div>
