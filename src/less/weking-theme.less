@@ -11,10 +11,24 @@
 // =====================
 // Navbar
 .navbar {
-  text-align: center;
+  .menu_header {
+    width: 100%;
+  }
+
+  &_logo {
+    text-align: center;
+  }
+
+  &_exit {
+    text-align: right;
+  }
 
   .menu_brand {
     float: none;
+  }
+
+  .btn {
+    color: @white;
   }
 }
 
@@ -47,14 +61,15 @@
 .photos {
   // Small padding over items
   .col {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   &_item {
-    background: @white;
-    margin-bottom: @font-line-height;
     position: relative;
+    margin-bottom: @font-line-height;
+    background: @white;
+    outline: 1px solid @grey300;
 
     &_content {
       position: relative;
@@ -205,7 +220,7 @@
 
 // Print
 @media print {
-  .navbar, .photos_item_meta {
+  .navbar, .photos_item_meta, .fab {
     display: none;
   }
 

@@ -6,11 +6,20 @@
  * Author: Constantine Karnaukhov
  * License: MIT License
  */
-.navbar {
+.navbar .menu_header {
+  width: 100%;
+}
+.navbar_logo {
   text-align: center;
+}
+.navbar_exit {
+  text-align: right;
 }
 .navbar .menu_brand {
   float: none;
+}
+.navbar .btn {
+  color: #ffffff;
 }
 .app {
   padding: 24px 0;
@@ -32,13 +41,14 @@
   margin-bottom: 24px;
 }
 .photos .col {
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .photos_item {
-  background: #ffffff;
-  margin-bottom: 24px;
   position: relative;
+  margin-bottom: 24px;
+  background: #ffffff;
+  outline: 1px solid #e0e0e0;
 }
 .photos_item_content {
   position: relative;
@@ -167,7 +177,8 @@
 }
 @media print {
   .navbar,
-  .photos_item_meta {
+  .photos_item_meta,
+  .fab {
     display: none;
   }
 }

@@ -39,8 +39,6 @@ function getPhotoByTag(tagname, $http) {
     }
   });
 
-  console.log(images);
-
   return images;
 }
 

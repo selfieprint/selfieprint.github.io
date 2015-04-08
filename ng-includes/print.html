@@ -10,8 +10,8 @@
       <div class="photos_item_meta clearfix">
         <img ng-src="{{image.user.profile_picture}}" class="photos_item_meta_avatar" alt=""/>
         <span class="photos_item_meta_name">{{image.user.full_name}}</span>
-        <a href="{{image.link}}" class="photos_item_meta_insta" target="_blank">
-          <i class="icon icon_open-in-new"></i>
+        <a href="{{image.large}}" class="photos_item_meta_insta" target="_blank" download="download">
+          <i class="icon icon_save"></i>
         </a>
       </div>
     </article>
@@ -20,13 +20,13 @@
 </section>
 
 <div class="fab">
-  <span class="fab_2 tooltip tooltip-left" data-tooltip="Save Images">
-    <a class="fab_btn btn btn-secondary-radius">
-      <i class="icon icon_save"></i>
-    </a>
-  </span>
+  <!--<span class="fab_2 tooltip tooltip-left" data-tooltip="Save Images">-->
+    <!--<a class="fab_btn btn btn-secondary-radius">-->
+      <!--<i class="icon icon_save"></i>-->
+    <!--</a>-->
+  <!--</span>-->
 
-  <span class="fab_1 tooltip tooltip-left" data-tooltip="Print Images" ng-click="window.print();">
+  <span class="fab_1 tooltip tooltip-left" data-tooltip="Print Images" ng-click="main.print();">
     <a class="fab_btn btn btn-secondary-radius">
       <i class="icon icon_print"></i>
     </a>

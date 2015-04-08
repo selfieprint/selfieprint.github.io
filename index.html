@@ -39,8 +39,25 @@
 <body ng-controller="MainCTRL as main">
 
   <nav class="navbar menu menu-primary">
-    <div class="menu_header col col_xs12">
-      <a href="#" class="menu_a menu_brand">Selfie Print</a>
+    <div class="menu_header">
+      <!-- Back -->
+      <div class="navbar_back col col_xs3">
+        <a href="#" class="btn btn-primary-flat" ng-show="page === includes.print" ng-click="page = includes.app">
+          <i class="icon icon_arrow-back"></i>
+        </a>
+      </div>
+
+      <!-- Logo -->
+      <div class="navbar_logo col col_xs6">
+        <a href="#" class="menu_a menu_brand">Selfie Print</a>
+      </div>
+
+      <!-- Exit -->
+      <div class="navbar_exit col col_xs3">
+        <a href="#" class="btn btn-primary-flat" ng-show="showExit" ng-click="Exit();">
+          Exit <i class="icon icon_exit-to-app"></i>
+        </a>
+      </div>
     </div>
   </nav>
 

@@ -4,14 +4,29 @@ Auth();
 // Init Angular
 var app = angular.module('selfieprint', [ ]);
 
+// Main Controller
 app.controller('MainCTRL', [ '$scope', '$http',  MainCTRL ]);
 
 function MainCTRL($scope, $http) {
   var main = this;
+
+  // Includes
   $scope.includes = {
     landing: "ng-includes/landing.html",
     app: "ng-includes/app.html",
     print: "ng-includes/print.html"
+  };
+
+  // Show exit button
+  if (localStorage.authStep === "2") {
+    $scope.showExit = true;
+  } else {
+    $scope.showExit = false;
+  }
+
+  // Call Exit function
+  $scope.Exit = function () {
+    Exit();
   };
 
   // Include Page
@@ -29,25 +44,22 @@ function MainCTRL($scope, $http) {
   // Set view mode
   main.view = '-grid';
 
-  // Print photos
-  main.printPhotos = function () {
-    var checkedPhotos = document.querySelectorAll('.photos_item_checkbox:checked'),
-      printsIds = [];
-
-    console.log(checkedPhotos);
-
-    for (var i = checkedPhotos.length - 1; i >= 0; i--) {
-      printsIds[i] = checkedPhotos[i].name;
-    }
+  // Print images
+  // Get images to print
+  main.imagesToPrint = function () {
+    var checkedPhotos = document.querySelectorAll('.photos_item_checkbox:checked');
 
     main.printsPhotos = [];
-    for (var i = 0; i < printsIds.length; i++) {
-      main.printsPhotos[i] = main.images[printsIds[i]];
+    for (var i = 0; i < checkedPhotos.length; i++) {
+      main.printsPhotos[i] = main.images[checkedPhotos[i].name];
     }
 
-    console.log(printsIds);
-    console.log(main.printsPhotos);
-
     $scope.page = $scope.includes.print;
+  };
+
+  // Call page print
+  main.print = function () {
+    window.print();
   }
+
 }
