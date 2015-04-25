@@ -36,7 +36,7 @@
       </label>
       <div class="photos_item_meta clearfix">
         <img ng-src="{{image.user.profile_picture}}" class="photos_item_meta_avatar" alt=""/>
-        <span class="photos_item_meta_name">{{image.user.full_name}}</span>
+        <span class="photos_item_meta_name">{{(image.user.full_name != "") ? image.user.full_name : image.user.username}}</span>
         <a href="{{image.link}}" class="photos_item_meta_insta" target="_blank">
           <i class="icon icon_open-in-new"></i>
         </a>
