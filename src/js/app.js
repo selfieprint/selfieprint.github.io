@@ -83,28 +83,15 @@ function MainCTRL($scope, $http) {
 
   // Search by hash tag
   $scope.search_hashtag = 'itclub_psuti';
+  $scope.photos = [];
   $scope.searchFormSubmit = function (search_hashtag) {
-    main.images = getPhotosByTag($http, $scope, reload = false, search_hashtag);
+    getPhotosByTag($http, $scope, reload = false, search_hashtag);
   };
 
   // AJAX loading
   main.updatePhotos = function () {
-    // console.log("Start update");
-    // var photosBlock = document.querySelector('.photos'),
-    //     endPoint = photosBlock.offsetTop + photosBlock.offsetHeight;
-
-    // window.addEventListener('scroll', function () {
-    //   var scrollPosition = window.scrollY + window.innerHeight;
-
-    //   if (scrollPosition >= endPoint) {
-
-        // TODO: callback func
-        console.log("Loading...");
-        var newImgs = getPhotosByTag($http, $scope, reload = true, $scope.search_hashtag);
-        main.images = main.images.concat(newImgs);
-      // }
-    // });
-    // console.log("End update");
+    console.log("Loading...");
+    getPhotosByTag($http, $scope, reload = true, $scope.search_hashtag);
   }
 
   // Set view mode
@@ -117,7 +104,7 @@ function MainCTRL($scope, $http) {
 
     main.printsPhotos = [];
     for (var i = 0; i < checkedPhotos.length; i++) {
-      main.printsPhotos[i] = main.images[checkedPhotos[i].name];
+      main.printsPhotos[i] = $scope.photos[checkedPhotos[i].name];
     }
 
     $scope.page = $scope.includes.print;

@@ -28,7 +28,7 @@
 <!-- Photos -->
 <section ng-class="'photos row ' + main.view">
 
-  <div class="col" ng-repeat="image in main.images">
+  <div class="col" ng-repeat="image in photos">
     <input class="photos_item_checkbox" id="{{ 'photos_item_checkbox_' + $index }}" name="{{$index}}" type="checkbox"/>
     <article class="photos_item">
       <label class="photos_item_content" for="{{ 'photos_item_checkbox_' + $index }}">

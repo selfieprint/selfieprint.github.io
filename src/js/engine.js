@@ -19,7 +19,14 @@ var Photo = function (id, large, thumb, caption, user, link) {
 * Get Photos By Hashtag
 * */
 
-function instaRequest (query, $http, $scope) {
+function getPhotosByTag($http, $scope, reload, tagname) {
+  // Generate Tag Query
+  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ localStorage.accessToken + "&callback=JSON_CALLBACK";
+
+  if (reload === true) {
+    query += "&max_tag_id=" + $scope.instaNextUrl;
+  }
+
   var images = [];
   console.log("instaRequest start");
   $http.jsonp(query).success(function (response) {
@@ -38,22 +45,11 @@ function instaRequest (query, $http, $scope) {
     }
 
     $scope.instaNextUrl = response.pagination.next_max_id;
-    console.log(images);
-    console.log($scope.instaNextUrl);
+
+    if (reload === true) {
+      $scope.photos = $scope.photos.concat(images);
+    } else {
+      $scope.photos = images;
+    }
   });
-
-  return images;
-}
-
-function getPhotosByTag($http, $scope, reload, tagname) {
-  // Generate Tag Query
-  var query = "https://api.instagram.com/v1/tags/"+ tagname +"/media/recent?access_token="+ localStorage.accessToken + "&callback=JSON_CALLBACK";
-
-  if (reload === true) {
-    query += "&max_tag_id=" + $scope.instaNextUrl;
-  }
-
-  console.log(query);
-
-  return instaRequest(query, $http, $scope);
 }
